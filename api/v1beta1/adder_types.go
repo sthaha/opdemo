@@ -28,8 +28,8 @@ type AdderSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of Adder. Edit Adder_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// Inputs is an example field of Adder. Edit Adder_types.go to remove/update
+	Inputs []int `json:"inputs,omitempty"`
 }
 
 // AdderStatus defines the observed state of Adder
