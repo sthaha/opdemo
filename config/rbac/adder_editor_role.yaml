@@ -1,0 +1,24 @@
+# permissions for end users to edit adders.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: adder-editor-role
+rules:
+- apiGroups:
+  - ops.cee.org
+  resources:
+  - adders
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ops.cee.org
+  resources:
+  - adders/status
+  verbs:
+  - get

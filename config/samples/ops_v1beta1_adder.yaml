@@ -1,0 +1,7 @@
+apiVersion: ops.cee.org/v1beta1
+kind: Adder
+metadata:
+  name: adder-sample
+spec:
+  # Add fields here
+  foo: bar

@@ -1,0 +1,20 @@
+# permissions for end users to view adders.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: adder-viewer-role
+rules:
+- apiGroups:
+  - ops.cee.org
+  resources:
+  - adders
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ops.cee.org
+  resources:
+  - adders/status
+  verbs:
+  - get

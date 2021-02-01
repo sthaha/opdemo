@@ -2,6 +2,11 @@ domain: cee.org
 layout: go.kubebuilder.io/v3
 projectName: opdemo
 repo: github.com/sthaha/opdemo
+resources:
+- crdVersion: v1
+  group: ops
+  kind: Adder
+  version: v1beta1
 version: 3-alpha
 plugins:
   manifests.sdk.operatorframework.io/v2: {}
