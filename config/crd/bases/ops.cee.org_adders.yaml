@@ -40,11 +40,21 @@ spec:
                 description: Inputs is an example field of Adder. Edit Adder_types.go
                   to remove/update
                 items:
+                  format: int32
                   type: integer
                 type: array
             type: object
           status:
             description: AdderStatus defines the observed state of Adder
+            properties:
+              result:
+                description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
+                  of cluster Important: Run "make" to regenerate code after modifying
+                  this file'
+                format: int32
+                type: integer
+            required:
+            - result
             type: object
         type: object
     served: true

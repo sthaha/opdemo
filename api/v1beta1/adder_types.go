@@ -29,13 +29,14 @@ type AdderSpec struct {
 	// Important: Run "make" to regenerate code after modifying this file
 
 	// Inputs is an example field of Adder. Edit Adder_types.go to remove/update
-	Inputs []int `json:"inputs,omitempty"`
+	Inputs []int32 `json:"inputs,omitempty"`
 }
 
 // AdderStatus defines the observed state of Adder
 type AdderStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	Result int32 `json:"result"`
 }
 
 // +kubebuilder:object:root=true

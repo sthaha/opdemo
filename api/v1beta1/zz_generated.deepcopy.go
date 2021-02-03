@@ -88,7 +88,7 @@ func (in *AdderSpec) DeepCopyInto(out *AdderSpec) {
 	*out = *in
 	if in.Inputs != nil {
 		in, out := &in.Inputs, &out.Inputs
-		*out = make([]int, len(*in))
+		*out = make([]int32, len(*in))
 		copy(*out, *in)
 	}
 }

@@ -48,9 +48,39 @@ type AdderReconciler struct {
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.7.0/pkg/reconcile
 func (r *AdderReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
-	_ = r.Log.WithValues("adder", req.NamespacedName)
+	log := r.Log.WithValues("adder", req.NamespacedName)
 
 	// your logic here
+	adder := &opsv1beta1.Adder{}
+	err := r.Get(ctx, req.NamespacedName, adder)
+	if err != nil {
+		log.Error(err, "failed to get adder")
+		return ctrl.Result{}, err
+	}
+
+	inputs := adder.Spec.Inputs
+	result := adder.Status.Result
+	log.Info("Adder", "name", adder.Name, "inputs", inputs, "result", result)
+
+	var sum int32
+	for _, v := range inputs {
+		sum += v
+	}
+
+	// everytthing is as expected
+	if sum == result {
+		log.Info("Adder", "name", adder.Name, "sum", sum, "result", result)
+		return ctrl.Result{}, err
+	}
+
+	adder.Status.Result = sum
+	log.Info("Adder Updated", "name", adder.Name, "sum", sum, "result", adder.Status.Result)
+
+	err = r.Status().Update(ctx, adder)
+	if err != nil {
+		log.Error(err, "Failed to update Memcached status")
+		return ctrl.Result{}, err
+	}
 
 	return ctrl.Result{}, nil
 }
